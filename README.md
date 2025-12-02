@@ -1,1 +1,1 @@
-# vamosgeolab.github.io
+# academic-scholar-website
