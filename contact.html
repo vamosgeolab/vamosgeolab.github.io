@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Us | VAMOS</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #004d40;
+            --accent-color: #00796b;
+            --background-light: #f7f9fb;
+            --card-bg: #fff;
+            --shadow-soft: 0 8px 25px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 30px rgba(0,0,0,0.15);
+            --border-radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: #333;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            border-left: 6px solid var(--primary-color);
+            padding-left: 18px;
+            font-size: 2.2rem;
+            margin: 40px 0 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 30px;
+            line-height: 1.7;
+            border: 1px solid #ededed;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .subtle {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .email-link,
+        .web-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .email-link:hover,
+        .web-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .recruitment-banner {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .recruitment-banner .box {
+            margin-bottom: 0;
+            padding: 35px;
+        }
+
+        @media (max-width: 900px) {
+            .recruitment-banner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .recruitment-banner .apply-box {
+            background-color: var(--accent-color);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 121, 107, 0.4);
+        }
+
+        .recruitment-banner .apply-box strong, 
+        .recruitment-banner .apply-box li, 
+        .recruitment-banner .apply-box p {
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .recruitment-banner .apply-box ul li::before {
+            content: '✨';
+            color: #fff;
+        }
+
+        .research-areas-wrapper {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 77, 64, 0.6)), url(images/research_bg.png);
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .research-areas-wrapper .section-title {
+            color: #fff;
+            border-left: 6px solid #fff;
+            margin-top: 0;
+        }
+
+        .research-areas-wrapper p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        .research-list-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px 30px;
+        }
+
+        .research-list-container li {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .research-areas-wrapper .research-list-container li::before {
+            content: '🔬';
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .research-list-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .research-list-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============ 优化的 Contact Us (最终统一背景 + 图片底部对齐) ============ */
+        .contact-wrapper {
+            /* 关键修改 1: 使用纯色背景作为基色填充未被图片覆盖的区域 (例如顶部) */
+            background-color: var(--primary-color); 
+            
+            /* 关键修改 2: 叠加图片、颜色渐变，并将其定位到底部，确保图片底部与地图底部对齐 */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,77,64,0.6)), url('images/contact_bp.jpg');
+            background-size: cover;
+            background-position: center bottom; 
+            background-repeat: no-repeat;
+            
+            padding: 60px 40px; 
+            color: #fff;
+            border-radius: var(--border-radius);
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: visible; 
+        }
+
+        .contact-wrapper h2.section-title {
+            color: #fff !important;
+            border-left-color: #fff !important;
+            padding-left: 18px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .contact-wrapper h3 {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .contact-wrapper p,
+        .contact-wrapper strong,
+        .contact-wrapper .subtle,
+        .contact-wrapper ul,
+        .contact-wrapper li {
+            color: #fff;
+        }
+        
+        /* 优化：链接样式 */
+        .contact-wrapper .email-link,
+        .contact-wrapper .web-link {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5); 
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-wrapper .email-link:hover,
+        .contact-wrapper .web-link:hover {
+            color: #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 优化：教师卡片样式 */
+        .person-card {
+            background-color: rgba(255, 255, 255, 0.1); 
+            padding: 20px;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+            box-shadow: none;
+            border: none;
+        }
+
+        .person-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: none;
+        }
+
+        .person-card strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .contact-hub-grid {
+             background: transparent;
+             box-shadow: none;
+             padding: 0 10px;
+             margin-bottom: 0;
+             border: none;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info-column {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 优化：微信二维码居中 */
+        .wechat-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .wechat-box img {
+            width: 150px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 关键修改 3: 地图区域回归统一背景 */
+        .map-area {
+            background-color: transparent; 
+            margin-top: 30px; 
+            margin-bottom: 0; 
+            padding: 0; 
+            border-radius: 0;
+            box-shadow: none;
+        }
+        
+        .map-area h3 {
+            color: #fff !important; 
+        }
+        
+        .map-container {
+            margin-top: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="header-title-row">
+            <img src="images/logo_up.png" class="logo" alt="Group Logo" />
+            <h1>Vegetation And Environment Remote Sensing</h1>
+        </div>
+        <h1 class="vamos-line"><strong>VAMOS</strong></h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a href="students.html">Students</a>
+            <a href="publications.html">Publications</a>
+            <a href="join.html" class="active">Join Us</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="recruitment-banner">
+        <div class="box">
+            <h2 class="section-title" style="margin-top: 0; font-size: 2rem;">Join Our Team</h2>
+            <strong>We are actively recruiting Postdoctoral Fellows and PhD students.</strong>
+            <p>The VAMOS group focuses on quantitative vegetation remote sensing, ecosystem modelling, radiative transfer, and multi-sensor observations to understand structural and functional ecosystem traits and their climate interactions.</p>
+            <h3 style="margin-top: 25px;">Why Join VAMOS?</h3>
+            <p class="subtle">We offer a dynamic research environment, access to state-of-the-art computational resources, and opportunities for international collaboration. We value curiosity and rigorous scientific inquiry.</p>
+        </div>
+        <div class="box apply-box">
+            <h2 class="section-title" style="margin-top: 0; border-left: none; color: #fff;">APPLY NOW</h2>
+            <p><strong>Please send the following materials:</strong></p>
+            <ul>
+                <li>CV with publication list</li>
+                <li>PDF of representative work(s)</li>
+            </ul>
+            <strong>Email subject:</strong> “Application – Postdoc – VAMOS – Name”.
+        </div>
+    </div>
+
+    <div class="research-areas-wrapper">
+        <h2 class="section-title">Research Areas</h2>
+        <p>We welcome applicants interested in broad topics including:</p>
+        <div class="research-list-container">
+            <ul>
+                <li>Monitoring ecosystem structural & functional traits</li>
+                <li>Ecosystem modelling (biochemical, hydrological, physiological processes)</li>
+                <li>Radiative transfer modelling & quantitative remote sensing</li>
+            </ul>
+            <ul>
+                <li>Solar-induced chlorophyll fluorescence (SIF), hyperspectral, and thermal observations</li>
+                <li>Forest 3D structure from multi-scale LiDAR</li>
+                <li>Understanding ecosystem–climate interactions via models and multi-source observations</li>
+            </ul>
+            <ul>
+                <li>Coupling remote sensing with process-based models</li>
+                <li>Machine learning applications in environmental science</li>
+                <li>Field campaigns and data validation</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="contact-wrapper">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-hub-grid">
+            <h3>Contact Faculty</h3>
+            <div class="contact-grid">
+                <div class="person-card">
+                    <strong>Prof. Peiqi Yang</strong>
+                    <a href="mailto:p.yang@njnu.edu.cn" class="email-link">p.yang@njnu.edu.cn</a>
+                </div>
+                <div class="person-card">
+                    <strong>Assoc. Prof. Jing Liu</strong>
+                    <a href="mailto:jingliugeo@njnu.edu.cn" class="email-link">jingliugeo@njnu.edu.cn</a>
+                </div>
+                <div class="person-card">
+                    <strong>Dr. Long Li</strong>
+                    <a href="mailto:longlinju@gmail.com" class="email-link">longlinju@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="contact-info-column">
+                <div class="address-site-info">
+                    <h3>🌐 Group Information</h3>
+                    <p><strong>Address:</strong><br>
+                        School of Geography, Nanjing Normal University<br>
+                        Xingyuan Building (行远楼), Xianlin Campus, Nanjing, China
+                    </p>
+                    <p><strong>Chinese Website:</strong><br>
+                        <a href="https://www.x-mol.com/groups/Yang_peiqi/" class="email-link" target="_blank">
+                            https://www.x-mol.com/groups/Yang_peiqi/
+                        </a>
+                    </p>
+                </div>
+                <div class="wechat-box">
+                    <h3>WeChat Official Account</h3>
+                    <img src="images/wechat_qr.jpg" alt="WeChat QR Code" />
+                    <div class="subtle" style="margin-top:6px;">Scan to follow us</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-area">
+            <h3>📍 Find Us Here</h3>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.0682!2d118.92240!3d32.10015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35cfcf74c1c56aed%3A0x92c392d52dfb72a4!2z5a2m5a2m5Lq65rCR5aSn5a2m5Z-O!5e0!3m2!1sen!2scn!4v1732617777777"
+                    allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <img src="images/logo.jpg" alt="Group Logo" class="footer-logo" />
+    <br />
+    © 2025 VAMOS Group | Nanjing Normal University
+</footer>
+
+</body>
+</html>
