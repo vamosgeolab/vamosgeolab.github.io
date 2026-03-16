@@ -1,1 +1,0 @@
-# academic-scholar-website
